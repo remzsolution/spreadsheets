@@ -14,12 +14,15 @@ class AutentificationController
      */
     private $userDAO;
 
+
+
      public function checkAutent($username, $pass){
 
          $user = $this->userDAO->getByUsername($username);
+
          if($user != null){
 
-             if($user->$password == $pass){
+             if($user->getPassword()== $pass){
                  //Log
                  return true;
              }
