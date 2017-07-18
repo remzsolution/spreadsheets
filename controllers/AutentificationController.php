@@ -37,7 +37,20 @@ class AutentificationController
 
      }
 
+     public function registerUser($login, $password, $conf_pass, $full_name){
+
+        if(isset($login) && isset($password) && isset($full_name)){
+
+            if ($password == $conf_pass) {
+                //Reg
+            } else {
+                //Pass do not match
+            }
 
 
+        }else{
+        }
+     }
 
-}
+
+     }
