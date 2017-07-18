@@ -67,7 +67,7 @@ abstract class GenericDao
      * @param $alike
      * @return mixed
      */
-    public abstract function getByCondition($data, $pageSize, $fullFetch, $alike);
+    protected abstract function getByCondition($data, $pageSize, $fullFetch, $alike);
 
     /**
      * @param $condition

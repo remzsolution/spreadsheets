@@ -7,12 +7,13 @@ class UserDAO extends dao\GenericDao
     protected function initOther()
     {
         // TODO: Implement initOther() method.
+
     }
 
     /**
      * @param $id
      * @param $fullFetch
-     * @return mixed
+     * @return User|null
      */
     public function getById($id, $fullFetch = false)
     {
@@ -21,7 +22,7 @@ class UserDAO extends dao\GenericDao
 
     /**
      * @param $fullFetch
-     * @return mixed
+     * @return User[]
      */
     public function getAll($fullFetch = false)
     {
@@ -30,7 +31,7 @@ class UserDAO extends dao\GenericDao
 
     /**
      * @param $object
-     * @return mixed
+     * @return boolean
      */
     public function save($object)
     {
@@ -39,7 +40,7 @@ class UserDAO extends dao\GenericDao
 
     /**
      * @param $object
-     * @return mixed
+     * @return boolean
      */
     public function update($object)
     {
@@ -49,7 +50,7 @@ class UserDAO extends dao\GenericDao
     /**
      * @param $row
      * @param $fullFetch
-     * @return mixed
+     * @return User
      */
     protected function buildOne($row, $fullFetch)
     {
@@ -61,11 +62,12 @@ class UserDAO extends dao\GenericDao
      * @param $pageSize
      * @param $fullFetch
      * @param $alike
-     * @return mixed
+     * @return User[]
      */
-    public function getByCondition($data, $pageSize, $fullFetch, $alike)
+    protected function getByCondition($data, $pageSize, $fullFetch, $alike)
     {
         // TODO: Implement getByCondition() method.
+
     }
 
     /**
