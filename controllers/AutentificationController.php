@@ -25,7 +25,10 @@ class AutentificationController
              if($user->getPassword()== $pass){
                  //Log
                  return true;
+             }else{
+                 return false;
              }
+
 
          }else{
              return false;
