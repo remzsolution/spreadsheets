@@ -27,20 +27,23 @@ class AuthentificationController
 
     public function checkAuthent($username, $pass)
     {
-         $this->userDAO = new UserDAO();
-        $user = $this->userDAO->getByUsername($username);
+         $userDAO = new UserDAO();
+        $user = $userDAO->getByUsername($username);
 
         if ($user != null) {
 
             if ($user->getPassword() == $pass) {
                 //Log
+                echo("True Log-In");
                 return true;
             } else {
+                echo("False Log-In");
                 return false;
             }
 
 
         } else {
+            echo("False Log-In");
             return false;
         }
 
@@ -61,6 +64,7 @@ class AuthentificationController
                     $user_r = new User();
                     $user_r->setUsername($login);
                     $user_r->setPassword($password);
+                    $user_r->setFullName($full_name);
                     $level = $accessLevelDAO->getById(1);
                     $user_r->setAccessLevels([$level]);
                     $userDAO->save($user_r);
@@ -92,10 +96,10 @@ class AuthentificationController
 
             // Empty textbox
         }
-        if (count($errors) > 0) {
+
 
             return $errors;
-        }
+
 
     }
 
@@ -108,5 +112,7 @@ class AuthentificationController
 }
 
 $test = new AuthentificationController();
-var_dump($test->registerUser( "ggg","asd", "asd", "a"));
+var_dump($test->registerUser( "gkg","asd", "asd", "a"));
+var_dump($test->checkAuthent( "kg","as2d"));
+var_dump($test->checkAuthent( "gkg","asd"));
 ?>
