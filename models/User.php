@@ -25,7 +25,7 @@ class User
     private $fullName;
 
     /**
-     * @var AccessLevelDAO[]
+     * @var AccessLevel[]
      */
     private $accessLevels;
 
@@ -78,7 +78,7 @@ class User
     }
 
     /**
-     * @return AccessLevelDAO[]
+     * @return AccessLevel[]
      */
     public function getAccessLevels(): array
     {
@@ -86,7 +86,7 @@ class User
     }
 
     /**
-     * @param AccessLevelDAO[] $accessLevels
+     * @param AccessLevel[] $accessLevels
      */
     public function setAccessLevels(array $accessLevels)
     {
@@ -102,7 +102,7 @@ class User
     }
 
     /**
-     * @param string $fullName
+     * @param $fullName
      */
     public function setFullName(string $fullName)
     {
