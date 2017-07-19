@@ -1,12 +1,12 @@
 <?php
-
+include "../autoloader.php";
 /**
  * Created by PhpStorm.
  * User: Yaroslav
  * Date: 7/18/2017
  * Time: 9:31 PM
  */
-class AutentificationController
+class AuthentificationController
 {
 
 
@@ -25,9 +25,9 @@ class AutentificationController
      */
     private $accessLevelDAO;
 
-    public function checkAutent($username, $pass)
+    public function checkAuthent($username, $pass)
     {
-
+         $this->userDAO = new UserDAO();
         $user = $this->userDAO->getByUsername($username);
 
         if ($user != null) {
@@ -53,6 +53,7 @@ class AutentificationController
         if (isset($login) && isset($password) && isset($full_name)) {
             echo('Allright');
             if ($password == $conf_pass) {
+                $this->userDAO = new UserDAO();
                 $check_login = $this->userDAO->getByUsername($login);
                 if (isset($check_login)) {
                     $this->user_r->setUsername($login);
@@ -103,6 +104,6 @@ class AutentificationController
 
 }
 
-$test = new AutentificationController();
+$test = new AuthentificationController();
 $test->registerUser( "ggg","asd", "asd", "a");
 ?>
