@@ -54,7 +54,7 @@ class AutentificationController
             echo('Allright');
             if ($password == $conf_pass) {
                 $check_login = $this->userDAO->getByUsername($login);
-                if ($check_login == null) {
+                if (isset($check_login)) {
                     $this->user_r->setUsername($login);
                     $this->user_r->setPassword($password);
                     $level = $this->accessLevelDAO->getById(1);
@@ -104,5 +104,5 @@ class AutentificationController
 }
 
 $test = new AutentificationController();
-$test->registerUser("asdw", "asd", "asd", "a");
+$test->registerUser( "ggg","asd", "asd", "a");
 ?>
