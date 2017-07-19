@@ -103,11 +103,7 @@ class AuthentificationController
 
     }
 
-    function editUser($full_name, $login, $password, $id)
-    {
 
-
-    }
 
 }
 
