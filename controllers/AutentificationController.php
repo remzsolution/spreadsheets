@@ -107,8 +107,5 @@ class AuthentificationController
 
 }
 
-$test = new AuthentificationController();
-var_dump($test->registerUser( "gkg","asd", "asd", "a"));
-var_dump($test->checkAuthent( "kg","as2d"));
-var_dump($test->checkAuthent( "gkg","asd"));
+
 ?>
