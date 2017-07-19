@@ -9,7 +9,6 @@
 class AutentificationController
 {
 
-
     /**
      * @var UserDAO
      */
@@ -24,6 +23,15 @@ class AutentificationController
      * @var AccessLevel
      */
     private $accessLevelDAO;
+
+    /**
+     * AutentificationController constructor.
+     */
+    public function __construct()
+    {
+        $this->userDAO = new UserDAO();
+    }
+
 
     public function checkAutent($username, $pass)
     {
