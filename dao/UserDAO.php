@@ -35,6 +35,16 @@ class UserDAO extends GenericDao
     }
 
     /**
+     * @param $fullName
+     * @return User[]
+     */
+    public function getByFullName($fullName)
+    {
+        $condition = "username LIKE ?";
+        return $this->fetchAll($this->createFetchQuery($condition), [$fullName]);
+    }
+
+    /**
      * @return User[]
      */
     public function getAll()
@@ -93,5 +103,14 @@ class UserDAO extends GenericDao
                 {$order}
                 LIMIT {$offset}, {$limit}
                 ";
+    }
+
+    /**
+     * @param int $id
+     * @return boolean
+     */
+    protected function deleteOne($id)
+    {
+        // TODO: Implement deleteOne() method.
     }
 }

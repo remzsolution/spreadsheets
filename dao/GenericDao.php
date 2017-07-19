@@ -17,8 +17,7 @@ abstract class GenericDao
      */
     public function __construct()
     {
-        $this->pdo = DatabaseConnection::$pdo;
-        echo $this->pdo == null . " Constructor";
+        $this->pdo = DatabaseConnection::getPdo();
     }
 
 
@@ -110,29 +109,34 @@ abstract class GenericDao
         return $objects;
     }
 
+    /**
+     * @param int $id
+     * @return boolean
+     */
+    protected abstract function deleteOne($id);
+
 
     /**
      * @param string $query
-     * @param $getId
+     * @param $returnLastInsertId
      * @param null $data
-     * @return mixed
+     * @return boolean|int
      * @internal param $getId
      */
-    protected function executeOne($query, $getId, $data = null)
+    protected function executeOne($query, $returnLastInsertId, $data = null)
     {
         $statement = $this->pdo->prepare($query);
-        $status = ($data == null) ? $statement->execute() : $statement->execute($data);
+        $success = ($data == null) ? $statement->execute() : $statement->execute($data);
 
-        if ($status) {
-            if ($getId) {
+        if ($success) {
+            if ($returnLastInsertId) {
                 return $this->pdo->lastInsertId();
-
-            } else {
-                return $status;
             }
+
         } else {
             DatabaseConnection::rollBack();
-            return false;
         }
+
+        return $success;
     }
 }
