@@ -67,7 +67,7 @@ class UserDAO extends GenericDao
         $data = [
             $object->getUsername(),
             $object->getPassword(),
-            $object->getFullName()
+            $object->getFullName().""
         ];
 
         $id = $this->executeOne($insertUserQuery, true, $data);
