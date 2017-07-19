@@ -20,7 +20,12 @@ class User
     private $password;
 
     /**
-     * @var AccessLevel[]
+     * @var string
+     */
+    private $fullName;
+
+    /**
+     * @var AccessLevelDAO[]
      */
     private $accessLevels;
 
@@ -73,7 +78,7 @@ class User
     }
 
     /**
-     * @return AccessLevel[]
+     * @return AccessLevelDAO[]
      */
     public function getAccessLevels(): array
     {
@@ -81,12 +86,33 @@ class User
     }
 
     /**
-     * @param AccessLevel[] $accessLevels
+     * @param AccessLevelDAO[] $accessLevels
      */
     public function setAccessLevels(array $accessLevels)
     {
         $this->accessLevels = $accessLevels;
     }
 
+    /**
+     * @return string
+     */
+    public function getFullName(): string
+    {
+        return $this->fullName;
+    }
+
+    /**
+     * @param string $fullName
+     */
+    public function setFullName(string $fullName)
+    {
+        $this->fullName = $fullName;
+    }
+
+
+    function __toString()
+    {
+        return var_dump($this)."";
+    }
 
 }

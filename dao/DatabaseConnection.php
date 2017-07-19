@@ -1,15 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Edward
- * Date: 3/1/2017
- * Time: 7:57 PM
- */
-
-namespace dao;
-
-use PDO;
-use PDOException;
 
 class DatabaseConnection
 {

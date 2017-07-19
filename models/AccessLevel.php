@@ -3,8 +3,18 @@
 
 class AccessLevel
 {
+
+    /**
+     * @var int
+     */
     private $id;
+
+    /**
+     * @var string
+     */
     private $name;
+
+
 
     /**
      * @return int
@@ -39,5 +49,9 @@ class AccessLevel
     }
 
 
+    function __toString()
+    {
+        return var_dump($this)."";
+    }
 
 }
