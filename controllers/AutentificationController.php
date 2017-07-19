@@ -42,13 +42,21 @@ class AutentificationController
         if(isset($login) && isset($password) && isset($full_name)){
 
             if ($password == $conf_pass) {
-                //Reg
+                $check_login = $this->userDAO->getByUsername($login);
+                if($check_login == null){
+
+                    //Register
+                }else{
+                    //Found  login
+                }
+
             } else {
                 //Pass do not match
             }
 
 
         }else{
+            // Empty textbox
         }
      }
 
