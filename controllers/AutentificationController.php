@@ -18,10 +18,10 @@ class AuthentificationController
     /**
      * @var User
      */
-    private $user_r;
+
 
     /**
-     * @var AccessLevel
+     * @var AccessLevelDAO
      */
     private $accessLevelDAO;
 
@@ -53,15 +53,18 @@ class AuthentificationController
         if (isset($login) && isset($password) && isset($full_name)) {
             echo('Allright');
             if ($password == $conf_pass) {
-                $this->userDAO = new UserDAO();
-                $check_login = $this->userDAO->getByUsername($login);
-                if (isset($check_login)) {
-                    $this->user_r->setUsername($login);
-                    $this->user_r->setPassword($password);
-                    $level = $this->accessLevelDAO->getById(1);
-                    $this->user_r->setAccessLevels([$level]);
-                    $user_save = $this->userDAO->save($this->user_r);
-                    echo("$user_save");
+                $userDAO = new UserDAO();
+                $accessLevelDAO = new AccessLevelDAO();
+                $check_login = $userDAO->getByUsername($login);
+                if ($check_login == null) {
+
+                    $user_r = new User();
+                    $user_r->setUsername($login);
+                    $user_r->setPassword($password);
+                    $level = $accessLevelDAO->getById(1);
+                    $user_r->setAccessLevels([$level]);
+                    $userDAO->save($user_r);
+
                     //Register
 
 
@@ -105,5 +108,5 @@ class AuthentificationController
 }
 
 $test = new AuthentificationController();
-$test->registerUser( "ggg","asd", "asd", "a");
+var_dump($test->registerUser( "ggg","asd", "asd", "a"));
 ?>
