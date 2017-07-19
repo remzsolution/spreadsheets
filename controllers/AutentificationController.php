@@ -51,7 +51,7 @@ class AutentificationController
     {
         $errors = [];
         if (isset($login) && isset($password) && isset($full_name)) {
-
+            echo('Allright');
             if ($password == $conf_pass) {
                 $check_login = $this->userDAO->getByUsername($login);
                 if ($check_login == null) {
@@ -59,7 +59,8 @@ class AutentificationController
                     $this->user_r->setPassword($password);
                     $level = $this->accessLevelDAO->getById(1);
                     $this->user_r->setAccessLevels([$level]);
-
+                    $user_save = $this->userDAO->save($this->user_r);
+                    echo("$user_save");
                     //Register
 
 
@@ -94,5 +95,14 @@ class AutentificationController
 
     }
 
+    function editUser($full_name, $login, $password, $id)
+    {
+
+
+    }
 
 }
+
+$test = new AutentificationController();
+$test->registerUser("asdw", "asd", "asd", "a");
+?>
