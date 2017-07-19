@@ -1,44 +1,60 @@
 <?php
 
-
-class UserDAO extends dao\GenericDao
+class UserDAO extends GenericDao
 {
 
-    protected function initOther()
-    {
-        // TODO: Implement initOther() method.
+    private $accessLevelDAO;
 
+    /**
+     * UserDAO constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->accessLevelDAO = new AccessLevelDAO();
     }
 
     /**
      * @param $id
-     * @param $fullFetch
      * @return User|null
      */
-    public function getById($id, $fullFetch = false)
+    public function getById($id)
     {
-        // TODO: Implement getById() method.
+        $condition = "id = ?";
+        return $this->fetchOne($this->createFetchQuery($condition), [$id]);
     }
 
     /**
-     * @param $fullFetch
+     * @param $username string
+     * @return string
+     */
+    public function getByUsername($username)
+    {
+        $condition = "username = ?";
+        return $this->fetchOne($this->createFetchQuery($condition), [$username]);
+    }
+
+    /**
      * @return User[]
      */
-    public function getAll($fullFetch = false)
+    public function getAll()
     {
         // TODO: Implement getAll() method.
     }
 
     /**
      * @param $object
-     * @return boolean
+     * @param bool $returnLastInsertId
+     * @return boolean|int
      */
-    public function save($object)
+    public function save($object, $returnLastInsertId = false)
     {
         // TODO: Implement save() method.
     }
 
     /**
+     *
+     *
      * @param $object
      * @return boolean
      */
@@ -49,25 +65,18 @@ class UserDAO extends dao\GenericDao
 
     /**
      * @param $row
-     * @param $fullFetch
      * @return User
      */
-    protected function buildOne($row, $fullFetch)
+    protected function buildOne($row)
     {
-        // TODO: Implement buildOne() method.
-    }
+        $user = new User();
 
-    /**
-     * @param $data
-     * @param $pageSize
-     * @param $fullFetch
-     * @param $alike
-     * @return User[]
-     */
-    protected function getByCondition($data, $pageSize, $fullFetch, $alike)
-    {
-        // TODO: Implement getByCondition() method.
+        $user->setId($row["id"]);
+        $user->setUsername($row["username"]);
+        $user->setPassword($row["password"]);
+        $user->setAccessLevels($this->accessLevelDAO->getByUserId($row["id"]));
 
+        return $user;
     }
 
     /**
@@ -75,10 +84,14 @@ class UserDAO extends dao\GenericDao
      * @param int $offset
      * @param int $limit
      * @param string $order
-     * @return mixed
+     * @return string
      */
     protected function createFetchQuery($condition, $offset = 0, $limit = 1000000, $order = "")
     {
-        // TODO: Implement createFetchQuery() method.
+        return "SELECT * FROM users
+                WHERE {$condition}
+                {$order}
+                LIMIT {$offset}, {$limit}
+                ";
     }
 }

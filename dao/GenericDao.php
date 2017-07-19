@@ -1,7 +1,5 @@
 <?php
-namespace dao;
 
-use PDO;
 
 /**
  * Class GenericDao
@@ -14,37 +12,34 @@ abstract class GenericDao
      */
     private $pdo;
 
-
     /**
      * GenericDao constructor.
      */
     public function __construct()
     {
         $this->pdo = DatabaseConnection::$pdo;
-        $this->initOther();
+        echo $this->pdo == null . " Constructor";
     }
 
 
-    protected abstract function initOther();
-
     /**
      * @param $id
-     * @param $fullFetch
      * @return mixed
      */
-    public abstract function getById($id, $fullFetch = false);
+    public abstract function getById($id);
 
     /**
-     * @param $fullFetch
      * @return mixed
      */
-    public abstract function getAll($fullFetch = false);
+    public abstract function getAll();
+
 
     /**
      * @param $object
+     * @param bool $returnLastInsertId
      * @return mixed
      */
-    public abstract function save($object);
+    public abstract function save($object, $returnLastInsertId = false);
 
 
     /**
@@ -53,21 +48,12 @@ abstract class GenericDao
      */
     public abstract function update($object);
 
-    /**
-     * @param $row
-     * @param $fullFetch
-     * @return mixed
-     */
-    protected abstract function buildOne($row, $fullFetch);
 
     /**
-     * @param $data
-     * @param $pageSize
-     * @param $fullFetch
-     * @param $alike
+     * @param $row
      * @return mixed
      */
-    protected abstract function getByCondition($data, $pageSize, $fullFetch, $alike);
+    protected abstract function buildOne($row);
 
     /**
      * @param $condition
@@ -78,13 +64,13 @@ abstract class GenericDao
      */
     protected abstract function createFetchQuery($condition, $offset = 0, $limit = 1000000, $order = "");
 
+
     /**
      * @param $query
      * @param null $data
-     * @param $fullFetch
      * @return mixed
      */
-    protected function fetchOne($query, $data = null, $fullFetch)
+    protected function fetchOne($query, $data = null)
     {
         $statement = $this->pdo->prepare($query);
         if ($data == null) {
@@ -95,19 +81,19 @@ abstract class GenericDao
 
         $row = $statement->fetch(PDO::FETCH_ASSOC);
         if ($row) {
-            return $this->buildOne($row, $fullFetch);
+            return $this->buildOne($row);
         } else {
             return null;
         }
     }
 
+
     /**
      * @param $query
      * @param null $data
-     * @param boolean $fullFetch
      * @return array
      */
-    protected function fetchAll($query, $data = null, $fullFetch)
+    protected function fetchAll($query, $data = null)
     {
         $objects = [];
         $statement = $this->pdo->prepare($query);
@@ -118,7 +104,7 @@ abstract class GenericDao
         }
 
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-            $objects[] = $this->buildOne($row, $fullFetch);
+            $objects[] = $this->buildOne($row);
         }
 
         return $objects;
