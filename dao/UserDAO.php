@@ -26,7 +26,7 @@ class UserDAO extends GenericDao
 
     /**
      * @param $username string
-     * @return string
+     * @return User
      */
     public function getByUsername($username)
     {
