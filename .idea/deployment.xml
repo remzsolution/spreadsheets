@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="wampserver">
+  <component name="PublishConfigData" autoUpload="Always" serverName="wampserver" uploadOnCheckin="87f70923-934a-44d8-8a3e-9ad50ebf6575" autoUploadExternalChanges="true">
     <serverData>
       <paths name="wampserver">
         <serverdata>
@@ -10,6 +10,7 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myUploadOnCheckinName" value="wampserver" />
     <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

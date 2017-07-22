@@ -1,4 +1,4 @@
 <?php
 include "autoloader.php";
 
-$authController = new AuthenticationController();
+$authControllers = new AuthenticationController();
