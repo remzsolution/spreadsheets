@@ -55,8 +55,7 @@ class AuthenticationController
         $errors = [];
         if (isset($login) && isset($password) && isset($full_name)) {
             if ($password == $conf_pass) {
-                $userDAO = new UserDAO();
-                $check_login = $userDAO->getByUsername($login);
+                $check_login = $this->userDAO->getByUsername($login);
                 if ($check_login == null) {
 
                     $user_r = new User();
@@ -65,7 +64,7 @@ class AuthenticationController
                     $user_r->setFullName($full_name);
                     $level = $this->accessLevelDAO->getById(1);
                     $user_r->setAccessLevels([$level]);
-                    $userDAO->save($user_r); //TODO: Function should return true|false based on "$userDAO->save($user_r);"
+                    $this->userDAO->save($user_r);
 
                     //Register
 
