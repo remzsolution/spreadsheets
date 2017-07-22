@@ -98,7 +98,7 @@ class User
      */
     public function getFullName(): string
     {
-        return $this->fullName."";
+        return $this->fullName;
     }
 
     /**

@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../resources/css/authForm.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/authForm.css">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row-fluid user-row">
-                        <img src="../resources/images/client.png" class="img-responsive"
+                        <img src="../assets/images/client.png" class="img-responsive"
                              alt="User placeholder"/>
                     </div>
                 </div>
@@ -39,9 +39,9 @@
         </div>
     </div>
 </div>
-<script src="../resources/js/jquery-3.2.1.min.js"></script>
-<script src="../resources/js/bootstrap.min.js"></script>
-<script src="../resources/js/authForm.js"></script>
+<script src="../assets/js/jquery-3.2.1.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/authForm.js"></script>
 </body>
 
 </html>

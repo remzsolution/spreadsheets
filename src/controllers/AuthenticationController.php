@@ -9,41 +9,41 @@
 class AuthenticationController
 {
 
-
     /**
      * @var UserDAO
      */
     private $userDAO;
 
     /**
-     * @var User
-     */
-
-
-    /**
      * @var AccessLevelDAO
      */
     private $accessLevelDAO;
 
+
+    /**
+     * AuthenticationController constructor.
+     */
+    public function __construct()
+    {
+        $this->userDAO = new UserDAO();
+        $this->accessLevelDAO = new AccessLevelDAO();
+    }
+
     public function checkAuthent($username, $pass)
     {
-        $userDAO = new UserDAO();
-        $user = $userDAO->getByUsername($username);
+
+        $user = $this->userDAO->getByUsername($username);
 
         if ($user != null) {
 
             if ($user->getPassword() == $pass) {
-                //Log
-                echo("True Log-In");
                 return true;
             } else {
-                echo("False Log-In");
                 return false;
             }
 
 
         } else {
-            echo("False Log-In");
             return false;
         }
 
@@ -54,20 +54,18 @@ class AuthenticationController
     {
         $errors = [];
         if (isset($login) && isset($password) && isset($full_name)) {
-            echo('Allright');
             if ($password == $conf_pass) {
                 $userDAO = new UserDAO();
-                $accessLevelDAO = new AccessLevelDAO();
                 $check_login = $userDAO->getByUsername($login);
                 if ($check_login == null) {
 
                     $user_r = new User();
                     $user_r->setUsername($login);
-                    $user_r->setPassword($password);
+                    $user_r->setPassword($password); //TODO: Use SHA256 hashing algorithm instead of raw password
                     $user_r->setFullName($full_name);
-                    $level = $accessLevelDAO->getById(1);
+                    $level = $this->accessLevelDAO->getById(1);
                     $user_r->setAccessLevels([$level]);
-                    $userDAO->save($user_r);
+                    $userDAO->save($user_r); //TODO: Function should return true|false based on "$userDAO->save($user_r);"
 
                     //Register
 
@@ -99,7 +97,6 @@ class AuthenticationController
 
 
         return $errors;
-
 
     }
 
