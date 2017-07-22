@@ -4,13 +4,12 @@ html {
 
 
 body {
-    /*background: #444 url(../images/background2.jpg);*/
-
     min-height: 100%;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#207cca+17,207cca+53,7db9e8+100 */
-    background: #06beb6;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #48b1bf, #06beb6);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #48b1bf, #06beb6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    background: #1c92d2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #f2fcfe, #1d95d6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #f2fcfe, #1d95d6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 .form-signin input {
@@ -53,6 +52,7 @@ body {
     border: 1px solid transparent;
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-}
+    box-shadow: 0 8px 8px rgba(0, 0, 0, .05);
 
+    display: none;
+}

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spreadsheets</title>
+    <title>Login</title>
     <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="../resources/css/authForm.css">
 </head>
@@ -13,7 +13,7 @@
 <div class="container" id="container">
     <div class="row vertical-offset-100">
         <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
+                <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row-fluid user-row">
                         <img src="../resources/images/client.png" class="img-responsive"
@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <form accept-charset="UTF-8" role="form" class="form-signin" autocomplete="off" action="login.php" method="post">
+                    <form accept-charset="UTF-8" role="form" class="form-signin" autocomplete="off">
                         <fieldset>
                             <label class="panel-login">
                                 <div class="login_result"></div>
