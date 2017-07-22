@@ -1,3 +1,5 @@
+<?php
+echo'
 <!DOCTYPE html>
 <html>
 
@@ -21,7 +23,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <form accept-charset="UTF-8" role="form" class="form-signin" autocomplete="off">
+                    <form accept-charset="UTF-8" role="form" class="form-signin" autocomplete="off" action="login.php" method="post">
                         <fieldset>
                             <label class="panel-login">
                                 <div class="login_result"></div>
@@ -43,3 +45,5 @@
 </body>
 
 </html>
+';
+?>
