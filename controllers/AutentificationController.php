@@ -1,5 +1,6 @@
 <?php
 include "../autoloader.php";
+
 /**
  * Created by PhpStorm.
  * User: Yaroslav
@@ -27,7 +28,7 @@ class AuthentificationController
 
     public function checkAuthent($username, $pass)
     {
-         $userDAO = new UserDAO();
+        $userDAO = new UserDAO();
         $user = $userDAO->getByUsername($username);
 
         if ($user != null) {
@@ -98,11 +99,10 @@ class AuthentificationController
         }
 
 
-            return $errors;
+        return $errors;
 
 
     }
-
 
 
 }
