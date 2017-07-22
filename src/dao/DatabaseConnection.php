@@ -27,18 +27,16 @@ class DatabaseConnection
             return DatabaseConnection::$pdo;
         }
 
-        //TODO: Move DB credentials to file
-        $host = "localhost";
-        $db = "spreadsheets";
-        $user = "root";
-        $pass = "";
-        $charset = "utf8";
+        $config = parse_ini_file("../configs/config.ini");
 
         try {
-            $dsn = "mysql:host={$host};dbname={$db};charset={$charset}";
+            $dsn = "mysql:
+                            host={$config["host"]};
+                            dbname={$config["dbname"]};
+                            charset={$config["charset"]}";
 
             DatabaseConnection::$pdo =
-                new PDO($dsn, $user, $pass, DatabaseConnection::$options);
+                new PDO($dsn, $config["username"], $config["password"], DatabaseConnection::$options);
         } catch (PDOException $e) {
             echo $e->getMessage() . "<br>";
         }

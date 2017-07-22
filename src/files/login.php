@@ -13,7 +13,7 @@
 <div class="container" id="container">
     <div class="row vertical-offset-100">
         <div class="col-md-4 col-md-offset-4">
-                <div class="panel panel-default">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row-fluid user-row">
                         <img src="../resources/images/client.png" class="img-responsive"
@@ -23,12 +23,14 @@
                 <div class="panel-body">
                     <form accept-charset="UTF-8" role="form" class="form-signin" autocomplete="off">
                         <fieldset>
-                            <label class="panel-login">
-                                <div class="login_result"></div>
-                            </label>
-                            <input class="form-control" placeholder="Username" id="username" type="text">
-                            <input class="form-control" placeholder="Password" id="password" type="password">
-                            <br>
+                            <div class="text-center text-error">
+                                <label class="panel-login"></label>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Username" id="username">
+                                <input class="form-control" placeholder="Password" id="password"
+                                       type="password">
+                            </div>
                             <input class="btn btn-lg btn-info btn-block" type="submit" id="login" value="Login">
                         </fieldset>
                     </form>

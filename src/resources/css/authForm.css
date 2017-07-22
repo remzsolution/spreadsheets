@@ -56,3 +56,9 @@ body {
 
     display: none;
 }
+
+div.text-error {
+    display: none;
+    margin: 10px;
+    color: #a94442;
+}

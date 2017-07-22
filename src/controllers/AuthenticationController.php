@@ -1,5 +1,4 @@
 <?php
-include "../autoloader.php";
 
 /**
  * Created by PhpStorm.
@@ -7,7 +6,7 @@ include "../autoloader.php";
  * Date: 7/18/2017
  * Time: 9:31 PM
  */
-class AuthentificationController
+class AuthenticationController
 {
 
 
