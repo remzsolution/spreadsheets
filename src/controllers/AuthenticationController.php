@@ -38,14 +38,17 @@ class AuthenticationController
             $pass_ = hash("sha256", $pass);
             $password = $user->getPassword();
             if (hash_equals($password, $pass_)) {
-                return true; // redirect to main page
+
+                $_SESSION["user"] = serialize($user);
+
+                saveAuthenticatedUser($user);        // redirect to main page
             } else {
-                return false; // redirect back with errors
+                // redirect back with errors
             }
 
 
         } else {
-            return false; // redirect back with errors
+            // redirect back with errors
         }
 
 
