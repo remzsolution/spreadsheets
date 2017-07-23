@@ -1,8 +1,8 @@
 <?php
 include "../context.php";
 
-$message = issetGET("errors") ? "Invalid username or password" : "Successfully logged out";
-
+$errorMessage = issetGET("errors") ? "Invalid username or password" : "";
+$logoutMessage = issetGET("logout") ? "Successfully logged out" : "";
 
 ?>
 <!DOCTYPE html>
@@ -30,8 +30,9 @@ $message = issetGET("errors") ? "Invalid username or password" : "Successfully l
                 <div class="panel-body">
                     <form accept-charset="UTF-8" action="../index.php" method="POST" class="form-signin" autocomplete="off">
                         <fieldset>
-                            <div class="login-info text-center text-error">
-                                <label class="panel-login"></label>
+                            <div class="login-info text-center">
+                                <label class="panel-login text-danger"><?=$errorMessage?></label>
+                                <label class="panel-login text-success"><?=$logoutMessage?></label>
                             </div>
                             <div class="form-group">
                                 <input class="form-control" placeholder="Username" name="username" type="text" required="required">

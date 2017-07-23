@@ -6,14 +6,23 @@ $("form").submit(function (event) {
     var isValid = validateCredentials(username, password);
 
     if (isValid) {
-        $("div.text-error:has(.panel-login)").fadeOut('fast');
+        $("div.login-info")
+            .fadeOut('fast')
+            .find('.panel-login')
+                .each(function () {
+                    $(this).text('');
+                });
+
         $("form div.form-group")
             .removeClass('has-error')
             .addClass('has-success');
 
         return true;
     } else {
-        $("div.text-error:has(.panel-login)").fadeIn('slow');
+        $("div.login-info").fadeIn('slow')
+            .find('.panel-login.text-danger')
+                .text('Invalid username or password')
+                .fadeIn('fast');
 
         $("form div.form-group")
             .removeClass('has-success')
@@ -25,8 +34,10 @@ $("form").submit(function (event) {
 });
 
 function validateCredentials(username, password) {
-    var usernameRegExp = /^[a-zA-Z0-9]{6,16}/;
-    var passwordRegExp = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    // var usernameRegExp = /^[a-zA-Z0-9]{6,16}/;
+    // var passwordRegExp = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    //
+    // return usernameRegExp.test(username) && passwordRegExp.test(password);
 
-    return usernameRegExp.test(username) && passwordRegExp.test(password);
+    return true;
 }
