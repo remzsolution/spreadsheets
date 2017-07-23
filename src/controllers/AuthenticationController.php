@@ -39,7 +39,7 @@ class AuthenticationController
             $password = $user->getPassword();
             if (hash_equals($password, $pass_)) {      // redirect to main page
 
-                saveAuthenticatedUser($user);
+                logInUser($user);
                 redirectAndExit("main.php");
             } else {
                redirectAndExit("login.php?errors"); // redirect back with errors

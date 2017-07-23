@@ -1,3 +1,9 @@
+<?php
+include "../context.php";
+
+$message = isset($_GET['errors']) ? "Invalid username or password" : 'Successfully logged out';
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -23,8 +29,8 @@
                 <div class="panel-body">
                     <form accept-charset="UTF-8" action="../index.php" method="POST" class="form-signin" autocomplete="off">
                         <fieldset>
-                            <div class="text-center text-error">
-                                <label class="panel-login">Invalid username or password</label>
+                            <div class="login-info text-center text-error">
+                                <label class="panel-login"></label>
                             </div>
                             <div class="form-group">
                                 <input class="form-control" placeholder="Username" name="username" type="text" required="required">
@@ -41,6 +47,7 @@
 
 <script src="../assets/js/jquery-3.2.1.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/jqueryExtensions.js"></script>
 <script src="../assets/js/authForm.js"></script>
 
 </body>

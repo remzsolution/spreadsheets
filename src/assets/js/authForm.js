@@ -1,12 +1,5 @@
 $('.panel.panel-default').fadeIn('slow');
 
-$.expr[':'].name = $.expr.createPseudo(function (filterParam) {
-    var name = filterParam;
-    return function (element, content, isXml) {
-        return $(element).is('[name=' + name + ']');
-    }
-});
-
 $("form").submit(function (event) {
     var username = $("input:name('username')").val();
     var password = $("input:name('password')").val();

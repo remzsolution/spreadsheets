@@ -57,8 +57,10 @@ body {
     display: none;
 }
 
-div.text-error {
-    display: none;
-    margin: 10px;
+.text-error {
     color: #a94442;
+}
+
+div.login-info {
+    margin: 10px;
 }
