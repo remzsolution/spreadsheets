@@ -35,8 +35,9 @@ class AuthenticationController
         $user = $this->userDAO->getByUsername($username);
 
         if ($user != null) {
-
-            if ($user->getPassword() == $pass) {
+            $pass_ = hash("sha256", $pass);
+            $password = $user->getPassword();
+            if (hash_equals($password, $pass_)) {
                 return true;
             } else {
                 return false;
@@ -60,7 +61,7 @@ class AuthenticationController
 
                     $user_r = new User();
                     $user_r->setUsername($login);
-                    $user_r->setPassword($password); //TODO: Use SHA256 hashing algorithm instead of raw password
+                    $user_r->setPassword(hash("sha256", $password)); //TODO: Use SHA256 hashing algorithm instead of raw password
                     $user_r->setFullName($full_name);
                     $level = $this->accessLevelDAO->getById(1);
                     $user_r->setAccessLevels([$level]);
@@ -101,6 +102,5 @@ class AuthenticationController
 
 
 }
-
 
 ?>
