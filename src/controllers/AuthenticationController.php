@@ -42,7 +42,7 @@ class AuthenticationController
                 logInUser($user);
                 redirectAndExit("main.php");
             } else {
-               redirectAndExit("login.php?errors"); // redirect back with errors
+                redirectAndExit("login.php?errors"); // redirect back with errors
             }
 
 
@@ -100,6 +100,12 @@ class AuthenticationController
 
         return $errors;
 
+    }
+
+    function userLogOut()
+    {
+
+        logOutUser();
     }
 
 
