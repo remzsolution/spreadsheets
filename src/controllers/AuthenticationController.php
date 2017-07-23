@@ -106,6 +106,7 @@ class AuthenticationController
     {
 
         logOutUser();
+        redirectAndExit("login.php?logout");
     }
 
 
