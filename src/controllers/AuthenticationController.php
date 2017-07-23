@@ -40,13 +40,14 @@ class AuthenticationController
             if (hash_equals($password, $pass_)) {      // redirect to main page
 
                 saveAuthenticatedUser($user);
+                redirectAndExit("main.php");
             } else {
-               redirectAndExit(); // redirect back with errors
+               redirectAndExit("login.php?errors"); // redirect back with errors
             }
 
 
         } else {
-            // redirect back with errors
+            redirectAndExit("login.php?errors");  // redirect back with errors
         }
 
 
