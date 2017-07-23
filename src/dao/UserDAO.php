@@ -205,9 +205,9 @@ class UserDAO extends GenericDao
         $user = new User();
 
         $user->setId($row["id"]);
-        $user->setUsername($row["username"] || "");
-        $user->setPassword($row["password"] || "");
-        $user->setFullName($row["full_name"] || "");
+        $user->setUsername($row["username"]);
+        $user->setPassword($row["password"]);
+        $user->setFullName($row["full_name"]);
         $user->setAccessLevels($this->accessLevelDAO->getByUserId($row["id"]));
 
         return $user;
