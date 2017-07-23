@@ -42,12 +42,12 @@ class AuthenticationController
                 logInUser($user);
                 redirectAndExit("main.php");
             } else {
-                redirectAndExit("login.php?errors&username = $username"); // redirect back with errors
+                redirectAndExit("login.php?errors"); // redirect back with errors
             }
 
 
         } else {
-            redirectAndExit("login.php?errors&username = $username");  // redirect back with errors
+            redirectAndExit("login.php?errors");  // redirect back with errors
         }
 
 
@@ -63,7 +63,7 @@ class AuthenticationController
 
                     $user_r = new User();
                     $user_r->setUsername($login);
-                    $user_r->setPassword(hash("sha256", $password)); 
+                    $user_r->setPassword(hash("sha256", $password));
                     $user_r->setFullName($full_name);
                     $level = $this->accessLevelDAO->getById(1);
                     $user_r->setAccessLevels([$level]);
