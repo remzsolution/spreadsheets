@@ -13,6 +13,7 @@ $logoutMessage = issetGET("logout") ? "Successfully logged out" : "";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/common.css">
     <link rel="stylesheet" href="../assets/css/authForm.css">
 </head>
 
