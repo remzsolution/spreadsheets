@@ -115,4 +115,11 @@ class User
         return var_dump($this)."";
     }
 
+    public function __sleep()
+    {
+        // TODO: Implement __sleep() method.
+        return ['id', 'username', 'password', 'fullName', 'accessLevels'];
+    }
+
+
 }
