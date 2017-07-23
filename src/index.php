@@ -1,10 +1,10 @@
 <?php
-include "autoloader.php";
-include "context.php";
+require_once "context.php";
 
 $authController = new AuthenticationController();
 
-if (POST("login-submit")) {
+if (issetPOST("login-submit")) {
     $authController->checkAuthent(POST("username"), POST("password"));
+} else if (issetGET("logout")) {
+    $authController->userLogOut();
 }
-

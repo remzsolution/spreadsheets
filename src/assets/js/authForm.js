@@ -1,4 +1,6 @@
-$('.panel.panel-default').fadeIn();
+$('.panel.panel-default').fadeIn(function() {
+    $('input:text').focus();
+});
 
 $("form").submit(function (event) {
     var username = $("input:name('username')").val();

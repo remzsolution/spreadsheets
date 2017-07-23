@@ -27,7 +27,7 @@ class DatabaseConnection
             return DatabaseConnection::$pdo;
         }
 
-        $config = parse_ini_file("../configs/config.ini");
+        $config = parse_ini_file(CONFIG_FILE);
 
         try {
             $dsn = "mysql:

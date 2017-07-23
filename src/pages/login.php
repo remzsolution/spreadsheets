@@ -1,5 +1,6 @@
 <?php
-include "../context.php";
+require_once "../context.php";
+
 
 $errorMessage = issetGET("errors") ? "Invalid username or password" : "";
 $logoutMessage = issetGET("logout") ? "Successfully logged out" : "";

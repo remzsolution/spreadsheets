@@ -37,17 +37,23 @@ class AuthenticationController
         if ($user != null) {
             $pass_ = hash("sha256", $pass);
             $password = $user->getPassword();
-            if (hash_equals($password, $pass_)) {      // redirect to main page
+            if (hash_equals($password, $pass_)) {
 
                 logInUser($user);
-                redirectAndExit("main.php");
+
+                if (empty(getLastRequestedPage())) {
+                    unsetLastRequestedPage();
+                    redirect("home.php");
+                } else {
+                    redirect(getLastRequestedPage());
+                }
             } else {
-                redirectAndExit("login.php?errors"); // redirect back with errors
+                redirect("login.php?errors");
             }
 
 
         } else {
-            redirectAndExit("login.php?errors");  // redirect back with errors
+            redirect("login.php?errors");
         }
 
 
@@ -102,11 +108,11 @@ class AuthenticationController
 
     }
 
-  public function userLogOut()
+    public function userLogOut()
     {
 
         logOutUser();
-        redirectAndExit("login.php?logout");
+        redirect("login.php?logout");
     }
 
     /**
@@ -114,15 +120,16 @@ class AuthenticationController
      * @param $password
      * @param $conf_pass
      */
-    public  function changePassword($user, $password, $conf_pass)
+    public function changePassword($user, $password, $conf_pass)
     {
         $errors = [];
 
         if (isset($password)) {
             if ($password == $conf_pass) {
                 $user->setPassword($conf_pass);
-                $this->userDAO->update($user);
-                redirectAndExit("profile?success");
+                $outcome = $this->userDAO->update($user) ? "success" : "failed";
+
+                redirect("profile.php?$outcome");
             } else {
                 $errors['password_match'] = " Password don`t match!";
             }
@@ -132,7 +139,7 @@ class AuthenticationController
         }
 
 
-    }
+}
 
 
 }

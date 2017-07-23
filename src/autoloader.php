@@ -7,7 +7,8 @@ spl_autoload_register(function($className){
     $directorys = array(
         "controllers",
         "dao",
-        "models"
+        "models",
+        "components"
     );
 
     //for each directory
