@@ -1,7 +1,8 @@
 <?php
 include "../context.php";
 
-$message = isset($_GET['errors']) ? "Invalid username or password" : 'Successfully logged out';
+$message = issetGET("errors") ? "Invalid username or password" : "Successfully logged out";
+
 
 ?>
 <!DOCTYPE html>

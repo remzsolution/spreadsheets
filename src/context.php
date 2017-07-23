@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-function get($param)
+function GET($param)
 {
     return $_GET[$param];
 }
 
-function post($param)
+function POST($param)
 {
     return $_POST[$param];
 }
@@ -22,7 +22,7 @@ function redirectAndExit($pageName)
  *
  * @return mixed
  */
-function getAuthenticatedUser()
+function getLoggedInUser()
 {
     return unserialize($_SESSION["user"]);
 }
@@ -40,4 +40,14 @@ function logInUser($user)
 function logOutUser()
 {
     unset($_SESSION["user"]);
+}
+
+function issetGET($param)
+{
+    return isset($_GET[$param]);
+}
+
+function issetPOST($param)
+{
+    return isset($_POST[$param]);
 }
