@@ -37,13 +37,11 @@ class AuthenticationController
         if ($user != null) {
             $pass_ = hash("sha256", $pass);
             $password = $user->getPassword();
-            if (hash_equals($password, $pass_)) {
+            if (hash_equals($password, $pass_)) {      // redirect to main page
 
-                $_SESSION["user"] = serialize($user);
-
-                saveAuthenticatedUser($user);        // redirect to main page
+                saveAuthenticatedUser($user);
             } else {
-                // redirect back with errors
+               redirectAndExit(); // redirect back with errors
             }
 
 
