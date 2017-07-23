@@ -1,47 +1,39 @@
-$('.panel.panel-default').fadeIn(1000);
+$('.panel.panel-default').fadeIn('slow');
 
-$('form').submit(function (event) {
-    event.preventDefault();
-});
-
-$("input:button").on('click', function (event) {
-    event.preventDefault();
-
-    var username = $("input[name='username']").val();
-    var password = $("input[type='password']").val();
-
-    var isValid = validateCredentials(username, password);
-
-    if (isValid) {
-        asyncLogin(username, password);
-    } else {
-        invalidateCredentials();
+$.expr[':'].name = $.expr.createPseudo(function (filterParam) {
+    var name = filterParam;
+    return function (element, content, isXml) {
+        return $(element).is('[name=' + name + ']');
     }
 });
 
-function asyncLogin(username, password) {
+$("form").submit(function (event) {
+    var username = $("input:name('username')").val();
+    var password = $("input:name('password')").val();
+    var isValid = validateCredentials(username, password);
 
-    $.ajax("../index.php", {
-        //TODO: JQuery in action AJAX chapter.
-    });
-}
+    if (isValid) {
+        $("div.text-error:has(.panel-login)").fadeOut('fast');
+        $("form div.form-group")
+            .removeClass('has-error')
+            .addClass('has-success');
+
+        return true;
+    } else {
+        $("div.text-error:has(.panel-login)").fadeIn('slow');
+
+        $("form div.form-group")
+            .removeClass('has-success')
+            .addClass('has-error')
+            .find('input:password').val('');
+
+        return false;
+    }
+});
 
 function validateCredentials(username, password) {
-    var usernameRegExp = /^[a-zA-Z0-9]{6, 16}$/;
+    var usernameRegExp = /^[a-zA-Z0-9]{6,16}/;
     var passwordRegExp = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
-    return username.match(usernameRegExp) && password.match(passwordRegExp);
-}
-
-function invalidateCredentials() {
-    $(".panel-login")
-        .text('Invalid username or password')
-        .closest('div').fadeToggle();
-
-    $("form div.form-group").each(function () {
-        var $this = $(this);
-        $this
-            .toggleClass('has-error')
-            .closest('input:password').val('');
-    });
+    return usernameRegExp.test(username) && passwordRegExp.test(password);
 }

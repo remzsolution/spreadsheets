@@ -38,14 +38,14 @@ class AuthenticationController
             $pass_ = hash("sha256", $pass);
             $password = $user->getPassword();
             if (hash_equals($password, $pass_)) {
-                return true;
+                return true; // redirect to main page
             } else {
-                return false;
+                return false; // redirect back with errors
             }
 
 
         } else {
-            return false;
+            return false; // redirect back with errors
         }
 
 

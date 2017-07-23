@@ -1,4 +1,11 @@
 <?php
 include "autoloader.php";
+include "context.php";
 
-$authControllers = new AuthenticationController();
+
+$authController = new AuthenticationController();
+
+if (get("login-submit")) {
+    $authController->checkAuthent(post("username"), post("password"));
+}
+

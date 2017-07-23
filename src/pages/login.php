@@ -21,17 +21,16 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <form accept-charset="UTF-8" role="form" class="form-signin" autocomplete="off">
+                    <form accept-charset="UTF-8" action="../index.php" method="POST" class="form-signin" autocomplete="off">
                         <fieldset>
                             <div class="text-center text-error">
-                                <label class="panel-login"></label>
+                                <label class="panel-login">Invalid username or password</label>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Username" id="username">
-                                <input class="form-control" placeholder="Password" id="password"
-                                       type="password">
+                                <input class="form-control" placeholder="Username" name="username" type="text" required="required">
+                                <input class="form-control" placeholder="Password" name="password" type="password" required="required">
                             </div>
-                            <input class="btn btn-lg btn-info btn-block" type="submit" id="login" value="Login">
+                            <input class="btn btn-lg btn-info btn-block" type="submit" id="login" value="Login" name="login-submit">
                         </fieldset>
                     </form>
                 </div>
@@ -39,9 +38,11 @@
         </div>
     </div>
 </div>
+
 <script src="../assets/js/jquery-3.2.1.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
 <script src="../assets/js/authForm.js"></script>
+
 </body>
 
 </html>
