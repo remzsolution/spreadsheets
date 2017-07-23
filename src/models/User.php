@@ -117,9 +117,6 @@ class User
 
     public function __sleep()
     {
-        // TODO: Implement __sleep() method.
         return ['id', 'username', 'password', 'fullName', 'accessLevels'];
     }
-
-
 }
