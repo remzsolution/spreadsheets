@@ -102,11 +102,36 @@ class AuthenticationController
 
     }
 
-    function userLogOut()
+  public function userLogOut()
     {
 
         logOutUser();
         redirectAndExit("login.php?logout");
+    }
+
+    /**
+     * @param User $user
+     * @param $password
+     * @param $conf_pass
+     */
+    public  function changePassword($user, $password, $conf_pass)
+    {
+        $errors = [];
+
+        if (isset($password)) {
+            if ($password == $conf_pass) {
+                $user->setPassword($conf_pass);
+                $this->userDAO->update($user);
+                redirectAndExit("profile?success");
+            } else {
+                $errors['password_match'] = " Password don`t match!";
+            }
+
+        } else {
+            $errors['password'] = " Password filed can`t be empty!";
+        }
+
+
     }
 
 
