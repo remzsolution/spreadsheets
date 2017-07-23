@@ -7,3 +7,5 @@ $('.dropdown').on('show.bs.dropdown', function() {
 $('.dropdown').on('hide.bs.dropdown', function() {
     $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
 });
+
+$('body').fadeIn('slow');
