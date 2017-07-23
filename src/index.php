@@ -5,7 +5,7 @@ include "context.php";
 
 $authController = new AuthenticationController();
 
-if (get("login-submit")) {
+if (post("login-submit")) {
     $authController->checkAuthent(post("username"), post("password"));
 }
 
