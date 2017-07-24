@@ -7,4 +7,6 @@ if (issetPOST("login-submit")) {
     $authController->checkAuthent(POST("username"), POST("password"));
 } else if (issetGET("logout")) {
     $authController->userLogOut();
+} else {
+    redirect("pages/login.php");
 }

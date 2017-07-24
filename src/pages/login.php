@@ -1,6 +1,9 @@
 <?php
 require_once "../context.php";
 
+if (getLoggedInUser() != null && !issetGET("logout")) {
+    redirect("home.php");
+}
 
 $errorMessage = issetGET("errors") ? "Invalid username or password" : "";
 $logoutMessage = issetGET("logout") ? "Successfully logged out" : "";

@@ -12,7 +12,7 @@ function POST($param)
 
 function redirect($pageName)
 {
-    header("Location: pages/$pageName");
+    header("Location: $pageName");
 }
 
 /**

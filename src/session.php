@@ -3,6 +3,7 @@ include "context.php";
 
 var_dump($_SESSION);
 
-if (GET("drop")) {
+if (issetGET("drop")) {
+    session_unset();
     session_destroy();
 }

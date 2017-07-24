@@ -42,18 +42,18 @@ class AuthenticationController
                 logInUser($user);
 
                 if (empty(getLastRequestedPage())) {
-                    unsetLastRequestedPage();
-                    redirect("home.php");
+                    redirect("pages/home.php");
                 } else {
                     redirect(getLastRequestedPage());
+                    unsetLastRequestedPage();
                 }
             } else {
-                redirect("login.php?errors");
+                redirect("pages/login.php?errors");
             }
 
 
         } else {
-            redirect("login.php?errors");
+            redirect("pages/login.php?errors");
         }
 
 
@@ -112,7 +112,7 @@ class AuthenticationController
     {
 
         logOutUser();
-        redirect("login.php?logout");
+        redirect("pages/login.php?logout");
     }
 
     /**
@@ -129,7 +129,7 @@ class AuthenticationController
                 $user->setPassword($conf_pass);
                 $outcome = $this->userDAO->update($user) ? "success" : "failed";
 
-                redirect("profile.php?$outcome");
+                redirect("pages/profile.php?$outcome");
             } else {
                 $errors['password_match'] = " Password don`t match!";
             }

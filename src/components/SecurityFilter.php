@@ -29,9 +29,10 @@ class SecurityFilter
         SecurityFilter::$PERMISSIONS_SET = [
             "home.php" => [SecurityFilter::$EMPLOYEE],
             "howto.php" => [SecurityFilter::$EMPLOYEE],
-            "management.php" => [SecurityFilter::$MANAGER, SecurityFilter::$ADMINISTRATOR],
             "profile.php" => [SecurityFilter::$EMPLOYEE],
-            "spreadsheets.php" => [SecurityFilter::$EMPLOYEE]
+            "spreadsheets.php" => [SecurityFilter::$EMPLOYEE],
+
+            "management.php" => [SecurityFilter::$MANAGER, SecurityFilter::$ADMINISTRATOR],
         ];
     }
 
