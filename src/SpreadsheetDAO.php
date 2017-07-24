@@ -26,6 +26,8 @@ class SpreadsheetDAO extends GenericDao
     public function getAll()
     {
         // TODO: Implement getAll() method.
+        $condition = "TRUE";
+
     }
 
     /**
@@ -92,6 +94,9 @@ class SpreadsheetDAO extends GenericDao
         $spreadsheet->setContent($row["s.content"]);
         $spreadsheet->setArchived($row["s.archived"]);
         $spreadsheet->setAccessLevel($accessLevel);
+        $spreadsheet->setDateCreated($row["s.date_created"]);
+        $spreadsheet->setDateModified($row["s.date_modified"]);
+        $spreadsheet->setArchived($row["s.archived"] ? true : false);
 
         $accessLevel->setId($row["al.id"]);
         $accessLevel->setName($row["al.name"]);
@@ -112,12 +117,14 @@ class SpreadsheetDAO extends GenericDao
                   s.id   AS 's.id',
                   s.name AS 's.name',
                   s.content AS 's.content',
-                  s.archived AS 's.archived',
                   al.id AS 'al.id',
-                  al.name AS 'al.name'
-                FROM spreadsheets s, access_levels al WHERE al.id = s.user_access_level 
+                  al.name AS 'al.name',
+                  s.date_created AS 's.date_created',
+                  s.date_modified AS 's.date_modified',
+                  s.archived AS 's.archived'
+                FROM spreadsheets s, access_levels al 
+                WHERE al.id = s.user_access_level 
                 AND {$condition} {$order} 
                 LIMIT {$offset}, {$limit}";
-
     }
 }
