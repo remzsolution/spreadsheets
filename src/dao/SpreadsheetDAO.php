@@ -14,7 +14,8 @@ class SpreadsheetDAO extends GenericDao
      */
     public function getById($id)
     {
-        // TODO: Implement getById() method.
+        $condition = "s.id = ?";
+        return $this->fetchSingle($this->createFetchQuery($condition), [$id]);
     }
 
     /**
@@ -25,9 +26,8 @@ class SpreadsheetDAO extends GenericDao
      */
     public function getAll()
     {
-        // TODO: Implement getAll() method.
         $condition = "TRUE";
-
+        return $this->fetchMultiple($this->createFetchQuery($condition), []);
     }
 
     /**
@@ -47,7 +47,22 @@ class SpreadsheetDAO extends GenericDao
      */
     public function save($object, $returnLastInsertId = false)
     {
-        // TODO: Implement save() method.
+        $spreadsheetSaveQuery = "INSERT INTO spreadsheets
+                                 (NAME, content, user_access_level, date_created, date_modified, archived)
+                                 VALUES (?, ?, ?, ?, ?, ?)";
+
+        $timestamp = date("Y-m-d H:i:s");
+
+        $data = [
+            $object->getName(),
+            $object->getContent(),
+            $object->getAccessLevel()->getId(),
+            $timestamp,
+            $timestamp,
+            $object->isArchived() ? 1 : 0
+        ];
+
+        return $this->executeQuery($spreadsheetSaveQuery, $returnLastInsertId, $data);
     }
 
     /**
@@ -62,7 +77,22 @@ class SpreadsheetDAO extends GenericDao
      */
     public function update($object)
     {
-        // TODO: Implement update() method.
+        $updateQuery = "UPDATE spreadsheets
+                        SET
+                          name         = ?, content = ?, user_access_level = ?,
+                          date_modified = ?, archived = ?
+                        WHERE id = ?";
+
+        $data = [
+            $object->getName(),
+            $object->getContent(),
+            $object->getAccessLevel()->getId(),
+            date("Y-m-d H:i:s"),
+            $object->isArchived() ? 1 : 0,
+            $object->getId()
+        ];
+
+        return $this->executeQuery($updateQuery, false, [$data]);
     }
 
     /**
@@ -77,7 +107,8 @@ class SpreadsheetDAO extends GenericDao
      */
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $query = "DELETE FROM spreadsheets WHERE id = ?";
+        return $this->executeQuery($query, false, [$id]);
     }
 
     /**
