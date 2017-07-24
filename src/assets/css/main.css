@@ -1,6 +1,6 @@
 body {
-    padding-top: 60px;
-    display: none;
+    padding-top: 50px;
+    height: 100%;
 }
 
 .navbar {
@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 1);
     box-shadow: 0 8px 8px 0 rgba(0, 0, 0, .05);
     border: 1px solid transparent;
     min-height: 100%;
@@ -34,4 +34,21 @@ ul.dropdown-menu {
 
 .dropdown-menu .divider {
     margin: 6px 0;
+}
+
+.table.spreadsheet-table {
+    width: 100%;
+    float: none;
+    border-radius: 0;
+}
+
+.search-box {
+    margin-bottom: 10px;
+}
+
+#search-bar {
+    border-radius: 0;
+    font-size: 20px;
+    padding: 22px 40px;
+    background: url(../images/searchicon.png) no-repeat 10px 11px;
 }
