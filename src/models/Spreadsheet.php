@@ -1,6 +1,9 @@
 <?php
 
 
+/**
+ * Class Spreadsheet
+ */
 class Spreadsheet
 {
     /**
@@ -27,6 +30,16 @@ class Spreadsheet
      * @var boolean
      */
     private $archived;
+
+    /**
+     * @var string
+     */
+    private $dateCreated;
+
+    /**
+     * @var string
+     */
+    private $dateModified;
 
     /**
      * @return int
@@ -108,10 +121,42 @@ class Spreadsheet
         $this->archived = $archived;
     }
 
+    /**
+     * @return string
+     */
+    public function getDateCreated(): string
+    {
+        return $this->dateCreated;
+    }
+
+    /**
+     * @param string $dateCreated
+     */
+    public function setDateCreated(string $dateCreated)
+    {
+        $this->dateCreated = $dateCreated;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateModified(): string
+    {
+        return $this->dateModified;
+    }
+
+    /**
+     * @param string $dateModified
+     */
+    public function setDateModified(string $dateModified)
+    {
+        $this->dateModified = $dateModified;
+    }
+
+
+
     public function __toString()
     {
         return var_dump($this)."";
     }
-
-
 }
