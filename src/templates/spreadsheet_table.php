@@ -1,9 +1,9 @@
 <?php
-    if (empty($spreadsheets)) {
-        exit;
+    if (empty($spreadsheets) || empty($pages)) {
+        redirect("404.php");
     }
 ?>
-<table class="table table-hover table-bordered spreadsheet-table">
+<table class="table table-hover table-bordered spreadsheet-table" data-pages="<?=$pages?>">
     <thead>
     <tr>
         <th>Name</th>
@@ -14,10 +14,14 @@
     <tbody>
     <?php
     /** @var Spreadsheet[] $spreadsheets */
+    $currentPage = 1;
     for ($i = 0; $i < count($spreadsheets); $i++) {
         $sheet = $spreadsheets[$i];
+        if ($i > $currentPage * SPREADHSEET_TABLE_SIZE) {
+            $currentPage++;
+        }
         ?>
-        <tr>
+        <tr data-page="<?=$currentPage?>">
             <td class="col-md-6">
                 <a href="../index.php?opendoc=<?=$sheet->getId()?>"><?=$sheet->getName()?></a>
             </td>

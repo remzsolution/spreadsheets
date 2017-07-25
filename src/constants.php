@@ -6,3 +6,4 @@ $configPath = stream_resolve_include_path(
     . DIRECTORY_SEPARATOR . "config.ini");
 
 define("CONFIG_FILE", ($configPath));
+define("SPREADHSEET_TABLE_SIZE", 25);

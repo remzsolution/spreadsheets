@@ -44,7 +44,7 @@ class AuthenticationController
                 if (empty(getLastRequestedPage())) {
                     redirect("pages/home.php");
                 } else {
-                    redirect(getLastRequestedPage());
+                    redirect("pages/".getLastRequestedPage());
                     unsetLastRequestedPage();
                 }
             } else {
