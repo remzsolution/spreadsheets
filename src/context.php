@@ -3,6 +3,7 @@ session_start();
 require_once "autoloader.php";
 require_once "constants.php";
 require_once "utilities.php";
+require_once "config.php";
 
 
 $securityFilter = new SecurityFilter();

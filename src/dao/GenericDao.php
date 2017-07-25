@@ -148,6 +148,7 @@ abstract class GenericDao
      */
     protected function executeQuery($query, $returnLastInsertId, $data = null)
     {
+        $query = trim($query);
         $statement = $this->pdo->prepare($query);
         $success = ($data == null) ? $statement->execute() : $statement->execute($data);
 

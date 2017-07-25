@@ -32,12 +32,12 @@ class Spreadsheet
     private $archived;
 
     /**
-     * @var string
+     * @var int
      */
     private $dateCreated;
 
     /**
-     * @var string
+     * @var int
      */
     private $dateModified;
 
@@ -122,38 +122,36 @@ class Spreadsheet
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getDateCreated(): string
+    public function getDateCreated()
     {
         return $this->dateCreated;
     }
 
     /**
-     * @param string $dateCreated
+     * @param int $dateCreated
      */
-    public function setDateCreated(string $dateCreated)
+    public function setDateCreated($dateCreated)
     {
         $this->dateCreated = $dateCreated;
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getDateModified(): string
+    public function getDateModified()
     {
         return $this->dateModified;
     }
 
     /**
-     * @param string $dateModified
+     * @param int $dateModified
      */
-    public function setDateModified(string $dateModified)
+    public function setDateModified($dateModified)
     {
         $this->dateModified = $dateModified;
     }
-
-
 
     public function __toString()
     {

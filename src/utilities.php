@@ -78,3 +78,4 @@ function unsetLastRequestedPage()
 {
     unset($_SESSION["last_unauthorized_request"]);
 }
+

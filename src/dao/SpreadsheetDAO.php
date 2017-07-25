@@ -79,7 +79,7 @@ class SpreadsheetDAO extends GenericDao
     {
         $updateQuery = "UPDATE spreadsheets
                         SET
-                          name         = ?, content = ?, user_access_level = ?,
+                          name = ?, content = ?, user_access_level = ?,
                           date_modified = ?, archived = ?
                         WHERE id = ?";
 
@@ -92,7 +92,7 @@ class SpreadsheetDAO extends GenericDao
             $object->getId()
         ];
 
-        return $this->executeQuery($updateQuery, false, [$data]);
+        return $this->executeQuery($updateQuery, false, $data);
     }
 
     /**
@@ -150,8 +150,8 @@ class SpreadsheetDAO extends GenericDao
                   s.content AS 's.content',
                   al.id AS 'al.id',
                   al.name AS 'al.name',
-                  s.date_created AS 's.date_created',
-                  s.date_modified AS 's.date_modified',
+                  UNIX_TIMESTAMP(s.date_created) AS 's.date_created',
+                  UNIX_TIMESTAMP(s.date_modified) AS 's.date_modified',
                   s.archived AS 's.archived'
                 FROM spreadsheets s, access_levels al 
                 WHERE al.id = s.user_access_level 
