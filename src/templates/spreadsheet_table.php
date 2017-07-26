@@ -3,7 +3,9 @@
         redirect("404.php");
     }
 ?>
-<table class="table table-hover table-bordered spreadsheet-table" data-pages="<?=$pages?>">
+<table class="table table-hover table-bordered spreadsheet-table"
+       data-pages="<?=$pages?>" data-page-size="<?=SPREADSHEET_TABLE_SIZE?>"
+       data-active-page="1">
     <thead>
     <tr>
         <th>Name</th>
@@ -15,24 +17,25 @@
     <?php
     /** @var Spreadsheet[] $spreadsheets */
     $currentPage = 1;
-    for ($i = 0; $i < count($spreadsheets); $i++) {
-        $sheet = $spreadsheets[$i];
-        if ($i > $currentPage * SPREADHSEET_TABLE_SIZE) {
+    foreach ($spreadsheets as $i => $sheet) {
+        if ($i + 1 > $currentPage * SPREADSHEET_TABLE_SIZE) {
             $currentPage++;
         }
         ?>
         <tr data-page="<?=$currentPage?>">
-            <td class="col-md-6">
+            <td class="col-md-8">
                 <a href="../index.php?opendoc=<?=$sheet->getId()?>"><?=$sheet->getName()?></a>
             </td>
-            <td class="col-md-3">
+            <td class="col-md-2">
                 <span class="text-muted"><?=$sheet->getDateModified()?></span>
             </td>
-            <td class="col-md-3">
+            <td class="col-md-2">
                 <span class="text-muted"><?=$sheet->getDateCreated()?></span>
             </td>
         </tr>
         <?php
+
+
     }
     ?>
     </tbody>

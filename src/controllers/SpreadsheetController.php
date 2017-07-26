@@ -19,9 +19,8 @@ class SpreadsheetController
     public function getSpreadSheetsTable()
     {
         $spreadsheets = $this->shDAO->getAll();
-        $pages = ((count($spreadsheets) / SPREADHSEET_TABLE_SIZE)
-            + (count($spreadsheets) % SPREADHSEET_TABLE_SIZE));
-        echo $pages;
+        $pages = floor((count($spreadsheets) / SPREADSHEET_TABLE_SIZE)
+            + (count($spreadsheets) % SPREADSHEET_TABLE_SIZE));
         require_once (__DIR__."/../templates/spreadsheet_table.php");
     }
 

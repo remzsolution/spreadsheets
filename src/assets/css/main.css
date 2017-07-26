@@ -37,7 +37,7 @@ ul.dropdown-menu {
 }
 
 .table.spreadsheet-table {
-    width: 100%;
+    /*width: 100%;*/
     float: none;
     border-radius: 0;
 }
@@ -52,4 +52,9 @@ ul.dropdown-menu {
     font-size: 20px;
     padding-left: 40px;
     background: url(../images/searchicon.png) no-repeat 10px 11px;
+}
+
+.centered-block {
+    width: 75%;
+    margin: auto;
 }
