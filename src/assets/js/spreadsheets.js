@@ -65,6 +65,7 @@ $(document).on('click', 'a:numeric', function (event) {
     });
 });
 
+// TODO
 // $('.pagination a:not(:numeric)').on('click', function (event) {
 //     event.preventDefault();
 //

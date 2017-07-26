@@ -70,4 +70,13 @@ class SecurityFilter
 
         return false;
     }
+
+    /**
+     * @param $pageName
+     * @return AccessLevel[]
+     */
+    public function getPageAccessLevels($pageName)
+    {
+        return SecurityFilter::$PERMISSIONS_SET[$pageName];
+    }
 }

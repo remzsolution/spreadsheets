@@ -18,7 +18,7 @@ function redirect($pageName)
 /**
  * Returns User object retrieved from session or null if none found.
  *
- * @return mixed
+ * @return User
  */
 function getLoggedInUser()
 {
