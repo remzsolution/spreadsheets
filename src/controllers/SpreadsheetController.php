@@ -27,11 +27,30 @@ class SpreadsheetController
     public function getDocument($id)
     {
         $spreadsheet = $this->shDAO->getById($id);
-        if ($this->checkAuthorization($spreadsheet, getLoggedInUser()) === true) {
-            require_once(__DIR__ . "/../templates/getdocument.php");
-        } else {
+        if ($this->checkAuthorization($spreadsheet, getLoggedInUser()) !== true) {
             redirect("templates/401.php");
         }
+
+        return $spreadsheet;
+    }
+
+    public function getDocumentJSON($id)
+    {
+        $spreadsheet = $this->shDAO->getById($id);
+        if ($this->checkAuthorization($spreadsheet, getLoggedInUser()) !== true) {
+            redirect("templates/401.php");
+        }
+
+        $document = [
+            "id" => $spreadsheet->getId(),
+            "name" => $spreadsheet->getName(),
+            "content" => json_decode($spreadsheet->getContent()),
+            "created" => date("d.m.Y H:i:s", $spreadsheet->getDateCreated()),
+            "modified" => date("d.m.Y H:i:s", $spreadsheet->getDateModified())
+        ];
+
+        echo json_encode($document);
+        exit;
     }
 
     /**

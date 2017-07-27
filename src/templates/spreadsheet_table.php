@@ -24,7 +24,7 @@
         ?>
         <tr data-page="<?=$currentPage?>">
             <td class="col-md-8">
-                <a href="../pages/editor.php?document=<?=$sheet->getId()?>"><?=$sheet->getName()?></a>
+                <a href="../pages/editor.php?id=<?=$sheet->getId()?>"><?=$sheet->getName()?></a>
             </td>
             <td class="col-md-2">
                 <span class="text-muted"><?=$sheet->getDateModified()?></span>
