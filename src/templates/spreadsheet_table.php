@@ -1,6 +1,6 @@
 <?php
     if (empty($spreadsheets) || empty($pages)) {
-        redirect("404.php");
+        redirect("401.php");
     }
 ?>
 <table class="table table-hover table-bordered spreadsheet-table"
@@ -8,9 +8,9 @@
        data-active-page="1">
     <thead>
     <tr>
-        <th>Name</th>
-        <th>Modified</th>
-        <th>Created</th>
+        <th class="text-center">Name</th>
+        <th class="text-center">Modified</th>
+        <th class="text-center">Created</th>
     </tr>
     </thead>
     <tbody>
@@ -23,19 +23,17 @@
         }
         ?>
         <tr data-page="<?=$currentPage?>">
-            <td class="col-md-8">
+            <td class="col-md-6 lead text-center">
                 <a href="../pages/editor.php?id=<?=$sheet->getId()?>"><?=$sheet->getName()?></a>
             </td>
-            <td class="col-md-2">
-                <span class="text-muted"><?=$sheet->getDateModified()?></span>
+            <td class="col-md-3 text-center">
+                <span class="text-muted"><?=date("d.m.Y H:i:s", $sheet->getDateModified());?></span>
             </td>
-            <td class="col-md-2">
-                <span class="text-muted"><?=$sheet->getDateCreated()?></span>
+            <td class="col-md-3 text-center">
+                <span class="text-muted"><?=date("d.m.Y H:i:s", $sheet->getDateCreated());?></span>
             </td>
         </tr>
         <?php
-
-
     }
     ?>
     </tbody>

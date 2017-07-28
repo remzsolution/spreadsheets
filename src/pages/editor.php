@@ -1,10 +1,5 @@
 <?php
 require_once "../context.php";
-
-if (!issetGET("id")) {
-    redirect("../templates/400.php");
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +13,9 @@ if (!issetGET("id")) {
 
 <body>
 
-<?php require_once "../templates/navbar.php"; ?>
+<?php require_once "../templates/editor_navbar.php"; ?>
 
-<div class="container-fluid"></div><!-- /.container -->
+<div class="container-fluid" id="document-container"></div><!-- /.container -->
 
 <nav class="navbar navbar-fixed-bottom">
     <div class="container-fluid">
@@ -36,7 +31,23 @@ if (!issetGET("id")) {
 </nav>
 
 <templates>
-    <div class="hot spreadsheet" id="<?= GET("id") ?>"></div>
+    <div class="hot spreadsheet" id="<?= issetGET("id") ? GET("id") : "" ?>"></div>
+
+    <div class="modal fade" id="openFileModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="table-responsive"></div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </templates>
 
 <?php require_once "../templates/footer.php" ?>

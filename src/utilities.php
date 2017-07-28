@@ -79,3 +79,17 @@ function unsetLastRequestedPage()
     unset($_SESSION["last_unauthorized_request"]);
 }
 
+function transpose($array) {
+    return array_map(null, ...$array);
+}
+
+function flipDiagonally($arr) {
+    $out = [];
+    foreach ($arr as $key => $subarr) {
+        foreach ($subarr as $subkey => $subvalue) {
+            $out[$subkey][$key] = $subvalue;
+        }
+    }
+
+    return $out;
+}

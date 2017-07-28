@@ -9,9 +9,13 @@ if (issetPOST("login-submit")) {
 } else if (issetGET("logout")) {
     $authController->userLogOut();
 } else if (issetGET("getdoc")) {
-    $spreadsheetsController->getDocumentJSON(GET('getdoc'));
+    $spreadsheetsController->getDocumentJSON(GET("getdoc"));
 } else if (issetGET("sheetsTable")) {
     $spreadsheetsController->getSpreadSheetsTable();
+} else if (issetPOST("autosave")) {
+  $spreadsheetsController->saveChanges(POST("autosave"));
+} else if (issetPOST("updatestructure")) {
+    $spreadsheetsController->updateStructure(POST("updatestructure"));
 } else {
     redirect("pages/login.php");
 }
