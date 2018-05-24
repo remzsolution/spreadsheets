@@ -50,7 +50,7 @@ class SpreadsheetController
         ];
 
         echo json_encode($document);
-
+//
 //        $sheetData = json_decode($spreadsheet->getContent());
 //        var_dump($sheetData);
 //        $sheetData = $this->removeCol($sheetData->data, 4);
